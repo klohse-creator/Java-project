@@ -10,6 +10,7 @@ import edu.wgu.d387_sample_code.model.response.ReservationResponse;
 //import edu.wgu.d387_sample_code.repository.PageableRoomRepository;
 import edu.wgu.d387_sample_code.repository.ReservationRepository;
 import edu.wgu.d387_sample_code.repository.RoomRepository;
+import org.apache.coyote.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.convert.ConversionService;
@@ -81,6 +82,7 @@ public class ReservationResource {
         Page<RoomEntity> page=new PageImpl<>(allRooms);
         return page.map(converter::convert);
     }
+
 
     @RequestMapping(path = "/{roomId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<RoomEntity> getRoomById(
