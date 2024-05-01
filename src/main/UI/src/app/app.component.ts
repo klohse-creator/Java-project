@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {HttpClient, HttpResponse,HttpHeaders} from "@angular/common/http";
 import { Observable } from 'rxjs';
+
 //import * as constants from "constants";
 //import {parse} from "@angular/compiler-cli/linker/babel/src/babel_core";
 //import {map} from "rjxs/operators";
@@ -49,6 +50,7 @@ export class AppComponent implements OnInit {
       this.messages = data;}
 
     )
+
 
     //Presentation times
     this.getLivePresentationTimes().subscribe(times => {
@@ -122,7 +124,7 @@ export class AppComponent implements OnInit {
 
   //getting presentation times
   getLivePresentationTimes(): Observable<any> {
-    return this.httpClient.get('http://localhost:8080/timezone/livepresentation', {responseType : 'json'});
+    return this.httpClient.get<string[]>('http://localhost:8080/timezone/livepresentation', {responseType : 'json'});
   }
 
   getAll(): Observable<any> {
