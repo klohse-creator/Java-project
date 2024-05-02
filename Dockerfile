@@ -1,5 +1,6 @@
-FROM openjdk:18
+FROM openjdk
 LABEL authors="Kali Lohse"
 COPY target/D387_sample_code-0.0.2-SNAPSHOT.jar app.jar
+RUN sh -c 'touch /app.jar'
 ENTRYPOINT ["java","-jar","/app.jar"]
 EXPOSE 8080
